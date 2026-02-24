@@ -5,15 +5,15 @@ export default function Layout({
   footerContent,
 }) {
   return (
-    <>
-      <header>
-        <h1>{headerTitle}</h1>
+    <div className="layout w-full h-full">
+      <header className="w-full bg-slate-300">
+        <h1 className="text-2xl px-12 py-4">{headerTitle}</h1>
       </header>
-      <main>
+      <main className="px-12 py-4 h-[80dvh]">
         {mainHeading}
-        <div>{mainContent}</div>
+        <div className="mt-4">{mainContent}</div>
       </main>
-      <footer>{footerContent}</footer>
-    </>
+      <footer className="px-12 py-4 bg-slate-300">{footerContent}</footer>
+    </div>
   );
 }

@@ -6,24 +6,46 @@ import Card from "./components/Card";
 
 function App() {
   const members = [
-    { name: "Derick Rufino", role: "Desenvolvedor Front-end" },
-    { name: "Ana Julia", role: "Documentação" },
-    { name: "Clara Gabriele", role: "Banco de Dados" },
+    {
+      name: "Derick Rufino",
+      role: "Desenvolvedor Front-end",
+      badgeColor: "bg-teal-700",
+    },
+    { name: "Ana Julia", role: "Documentação", badgeColor: "bg-green-900" },
+    {
+      name: "Clara Gabriele",
+      role: "Banco de Dados",
+      badgeColor: "bg-cyan-900",
+    },
+    {
+      name: "Guilherme Matchin",
+      role: "Backend",
+      badgeColor: "bg-blue-800",
+    },
   ];
   return (
-    <div className="min-h-screen min-w-full bg-gray-100 text-gray-800">
+    <div className="min-h-screen bg-gray-100 text-gray-800 flex flex-col items-center max-w-[1080px] m-auto gap-0">
       <Banner />
       <Layout
         headerTitle="Atividade React"
-        mainHeading="Bem-vindo à atividade React!"
+        mainHeading="Frase do dia e Cards"
         mainContent={
           <>
             {/* Hoje aprendi que expressões JSX em um onjeto prop devem estar encapsuladas em um elemento pai, como uma div ou um fragmento vazio kkkkk estranho */}
-            <NomeAluno />
-            <FraseDoDia />
-            {members.forEach((elem) => (
-              <Card name={elem.name} role={elem.role} />
-            ))}
+            <div className="px-2 py-6 rounded-lg border-solid border-slate-800 border-2 mb-12">
+              <FraseDoDia />
+              <NomeAluno />
+            </div>
+            <div className="flex gap-8 flex-wrap bg-">
+              {members.map((elem) => (
+                <Card
+                  key={elem.name}
+                  name={elem.name}
+                  role={elem.role}
+                  badgeColor={elem.badgeColor}
+                />
+              ))}
+            </div>
           </>
         }
         footerContent="Desenvolvido por Derick Rufino - 2026"
