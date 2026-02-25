@@ -23,6 +23,16 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+    &::-webkit-scrollbar{
+    width: 12px;
+    background-color: ghostwhite;
+  }
+
+  &::-webkit-scrollbar-thumb{
+    border-radius: 100px;
+    background-color: #0e749070;
+  }
 }
 /* a {
   font-weight: 500;

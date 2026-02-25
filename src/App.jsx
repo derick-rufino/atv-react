@@ -1,3 +1,5 @@
+import {useEffect, useState} from 'react';
+
 import Banner from "./components/Banner";
 import NomeAluno from "./components/NomeAluno";
 import FraseDoDia from "./components/FraseDoDia";
@@ -5,6 +7,8 @@ import Layout from "./components/Layout";
 import Card from "./components/Card";
 
 function App() {
+  const [isShown, setIsShown] = useState(false);
+
   const members = [
     {
       name: "Derick Rufino",
@@ -23,9 +27,16 @@ function App() {
       badgeColor: "bg-blue-800",
     },
   ];
+
+useEffect(() => {
+  setTimeout(() => {
+    setIsShown(true)
+  }, 5000);
+})
+
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800 flex flex-col items-center max-w-[1080px] m-auto gap-0">
-      <Banner />
+      {isShown && <Banner />}
       <Layout
         headerTitle="Atividade React"
         mainHeading="Frase do dia e Cards"
