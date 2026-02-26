@@ -1,10 +1,12 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from "react";
 
 import Banner from "./components/Banner";
 import NomeAluno from "./components/NomeAluno";
 import FraseDoDia from "./components/FraseDoDia";
 import Layout from "./components/Layout";
 import Card from "./components/Card";
+import CardInterativo from "./components/CardInterativo";
+import MyButton from "./components/MyButton";
 
 function App() {
   const [isShown, setIsShown] = useState(false);
@@ -28,14 +30,18 @@ function App() {
     },
   ];
 
-useEffect(() => {
-  setTimeout(() => {
-    setIsShown(true)
-  }, 5000);
-})
+  useEffect(() => {
+    setTimeout(() => {
+      setIsShown(true);
+    }, 5000);
+  });
+
+  function comprar() {
+    alert("Produto comprado com sucesso!");
+  }
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 flex flex-col items-center max-w-[1080px] m-auto gap-0">
+    <div className="min-h-screen h-fit bg-gray-100 text-gray-800 flex flex-col items-center max-w-[1080px] m-auto gap-0">
       {isShown && <Banner />}
       <Layout
         headerTitle="Atividade React"
@@ -43,7 +49,7 @@ useEffect(() => {
         mainContent={
           <>
             {/* Hoje aprendi que expressões JSX em um onjeto prop devem estar encapsuladas em um elemento pai, como uma div ou um fragmento vazio kkkkk estranho */}
-            <div className="px-2 py-6 rounded-lg border-solid border-slate-800 border-2 mb-12">
+            <div className="px-4 py-6 rounded-xl border-solid border-slate-800 border-2 mb-12">
               <FraseDoDia />
               <NomeAluno />
             </div>
@@ -56,6 +62,23 @@ useEffect(() => {
                   badgeColor={elem.badgeColor}
                 />
               ))}
+            </div>
+            <div className="mt-8 flex gap-8 flex-wrap">
+              <CardInterativo
+                titulo="Card Interativo"
+                texto="Este é um card interativo"
+                textoBotao="Clique aqui"
+              />
+
+              <CardInterativo
+                titulo="Card sem botão"
+                texto="Este card não tem um botão"
+              />
+              <CardInterativo
+                titulo="Card com botão externo"
+                texto="Este card tem um botão externo (componente separado)"
+                botaoExterno={<MyButton action={comprar}>Comprar</MyButton>}
+              ></CardInterativo>
             </div>
           </>
         }
