@@ -5,8 +5,8 @@ import NomeAluno from "./components/NomeAluno";
 import FraseDoDia from "./components/FraseDoDia";
 import Layout from "./components/Layout";
 import Card from "./components/Card";
-import CardInterativo from "./components/CardInterativo";
-import MyButton from "./components/MyButton";
+import { Link } from "react-router";
+
 
 function App() {
   const [isShown, setIsShown] = useState(false);
@@ -36,9 +36,6 @@ function App() {
     }, 5000);
   });
 
-  function comprar() {
-    alert("Produto comprado com sucesso!");
-  }
 
   return (
     <div className="min-h-screen h-fit bg-gray-100 text-gray-800 flex flex-col items-center max-w-[1080px] m-auto gap-0">
@@ -63,23 +60,14 @@ function App() {
                 />
               ))}
             </div>
-            <div className="mt-8 flex gap-8 flex-wrap">
-              <CardInterativo
-                titulo="Card Interativo"
-                texto="Este é um card interativo"
-                textoBotao="Clique aqui"
-              />
-
-              <CardInterativo
-                titulo="Card sem botão"
-                texto="Este card não tem um botão"
-              />
-              <CardInterativo
-                titulo="Card com botão externo"
-                texto="Este card tem um botão externo (componente separado)"
-                botaoExterno={<MyButton action={comprar}>Comprar</MyButton>}
-              ></CardInterativo>
-            </div>
+              <div className="links mt-8 flex gap-8 flex-wrap">
+                <Link to="/aula-props" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                  Aula Props
+                </Link>
+                <Link to="/exercicios" className="px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-colors">
+                  Exercícios
+                </Link>
+                </div>
           </>
         }
         footerContent="Desenvolvido por Derick Rufino - 2026"
