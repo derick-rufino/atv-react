@@ -1,6 +1,6 @@
 export default function Banner() {
   return (
-    <div className="banner w-full flex h-16 bg-cyan-700">
+    <div className="banner w-full flex h-16 bg-cyan-700 sticky top-0 z-50">
       <a
         href="https://github.com/derick-rufino/atv-react"
         target="_blank"
